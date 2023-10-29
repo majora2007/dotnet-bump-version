@@ -31,11 +31,11 @@ export const commit = async (
         core.debug("Pusher:");
         core.debug(JSON.stringify(actionContext.pusher));
 
-        core.info(`git config user.name "${actionContext.pusher.name}"`);
-        await exec("git", ["config", "user.name", `"${actionContext.pusher.name}"`], options);
+        core.info(`git config user.name "majora2007"`);
+        await exec("git", ["config", "user.name", `"majora2007"`], options);
 
-        core.info(`git config user.email "${actionContext.pusher.email}"`);
-        await exec("git", ["config", "user.email", `"${actionContext.pusher.email}"`], options);
+        core.info(`git config user.email "josephmajora@gmail.com"`);
+        await exec("git", ["config", "user.email", `"josephmajora@gmail.com"`], options);
 
         // Issue #10
         // While Git was updated from 2.33.0 to 2.33.1, need to specify how to reconcile divergent branches.
