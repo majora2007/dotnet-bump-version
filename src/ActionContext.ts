@@ -92,9 +92,10 @@ export class ActionContext {
         committerUserName: string;
     } {
         if (this._githubContext.action === "closed") {
+            core.debug("id: " + this.sha);
             return {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-explicit-any
-                id: (this._githubContext as any)?.pull_request?.head?.sha.toString() ?? "",
+                id: this.sha.toString() ?? "",
                 message: "",
                 timestamp: "",
                 url: "",
