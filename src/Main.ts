@@ -13,6 +13,9 @@ async function bumpVersion(): Promise<void> {
     const githubContext = github.context;
 
     const actionContext = new ActionContext(githubContext);
+    core.info("context:");
+    core.info(JSON.stringify(githubContext));
+    core.info("");
 
     // 替换 version file 中的 version
     const versionFiles = await inputs.getVersionFiles();
@@ -22,8 +25,8 @@ async function bumpVersion(): Promise<void> {
 
     // Issue #5
     // Only commit changed files
-    let bumpedFiles = versionFiles.filter(file => {
-        const bump = new Bump(file, "patch", inputs);
+    const bumpedFiles = versionFiles.filter(file => {
+        const bump = new Bump(file, "build", inputs);
         return bump.bump();
     });
 

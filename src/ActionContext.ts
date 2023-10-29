@@ -91,6 +91,18 @@ export class ActionContext {
         committerEmail: string;
         committerUserName: string;
     } {
+        if (this._githubContext.action === "closed") {
+            return {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-explicit-any
+                id: (this._githubContext as any)?.pull_request?.head?.sha.toString() ?? "",
+                message: "",
+                timestamp: "",
+                url: "",
+                committerEmail: "",
+                committerName: "",
+                committerUserName: ""
+            };
+        }
         return {
             id: this._payload?.head_commit.id.toString() ?? "",
             message: this._payload?.head_commit.message.toString() ?? "",
@@ -103,6 +115,19 @@ export class ActionContext {
     }
 
     public get pusher(): { name: string; email: string } {
+
+        // If type is pull_request and close event
+        if (this._githubContext.action === "closed") {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+            const mergedBy = (this._githubContext as any)?.pull_request?.merged_by;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            const name: string = mergedBy?.login ?? "";
+            return {
+                name,
+                email: ""
+            };
+        }
+        
         return {
             name: this._payload?.pusher.name.toString() ?? "",
             email: this._payload?.pusher.email.toString() ?? ""
