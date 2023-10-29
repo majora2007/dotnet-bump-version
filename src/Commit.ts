@@ -28,6 +28,9 @@ export const commit = async (
         core.info("git status");
         await exec("git", ["status"], options);
 
+        core.debug("Pusher:");
+        core.debug(JSON.stringify(actionContext.pusher));
+
         core.info(`git config user.name "${actionContext.pusher.name}"`);
         await exec("git", ["config", "user.name", `"${actionContext.pusher.name}"`], options);
 

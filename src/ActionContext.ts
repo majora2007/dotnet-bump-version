@@ -119,11 +119,11 @@ export class ActionContext {
         // If type is pull_request and close event
         if (this._githubContext.action == "closed") {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-            const mergedBy = (this._githubContext as any)?.payload?.pull_request?.merged_by;
+            const mergedBy = (this._githubContext as any)?.payload?.pull_request?.merged_by?.login;
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            const name: string = mergedBy?.login ?? "";
+            const name: string = mergedBy ?? "";
             return {
-                name,
+                name: name,
                 email: ""
             };
         }
