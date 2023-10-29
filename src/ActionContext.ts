@@ -114,25 +114,25 @@ export class ActionContext {
         };
     }
 
-    public get pusher(): { name: string; email: string } {
+    // public get pusher(): { name: string; email: string } {
 
-        // If type is pull_request and close event
-        if (this._githubContext.action == "closed") {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-            const mergedBy = (this._githubContext as any)?.payload?.pull_request?.merged_by?.login;
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            const name: string = mergedBy ?? "";
-            return {
-                name: name,
-                email: ""
-            };
-        }
+    //     // If type is pull_request and close event
+    //     if (this._githubContext.action == "closed") {
+    //         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+    //         const mergedBy = (this._githubContext as any)?.payload?.pull_request?.merged_by?.login;
+    //         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    //         const name: string = mergedBy ?? "";
+    //         return {
+    //             name: name,
+    //             email: ""
+    //         };
+    //     }
         
-        return {
-            name: this._payload?.pusher.name.toString() ?? "",
-            email: this._payload?.pusher.email.toString() ?? ""
-        };
-    }
+    //     return {
+    //         name: this._payload?.pusher.name.toString() ?? "",
+    //         email: this._payload?.pusher.email.toString() ?? ""
+    //     };
+    // }
 
     public get actionType(): string {
         return this._githubContext.action;
