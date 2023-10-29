@@ -1,6 +1,6 @@
-name: "DotNet Bump Versions"
+name: "DotNet Bump Versions (Kavita fork)"
 description: "A GitHub Action to easily bump .NET project version files(.csproj). Major, minor, patch, build are supported."
-author: "Siqi Lu"
+author: "Siqi Lu, Joseph Milazzo"
 branding:
     icon: "git-commit"
     color: "purple"

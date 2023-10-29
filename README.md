@@ -5,7 +5,7 @@ A GitHub Action to easily bump .NET Core project version files(.csproj).
 -   Bumps the version number in the provided version files(default **/*.csproj).
 -   Push changes to the repository that triggered a workflow.
 
-This action program only supports "push" events.
+## This is a fork of SiqiLu/dotnet-bump-version's package for Kavita's pipelines. Doesn't use push event, but much simpiler. Use at your own risk!
 
 ## Usage
 
