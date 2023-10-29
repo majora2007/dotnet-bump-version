@@ -12,9 +12,9 @@ export const commit = async (
         core.info(`Committing changes with message "${message}".`);
         const remoteRepository = `https://${actionContext.githubActor}:${githubToken}@github.com/${actionContext.githubRepository}.git`;
         core.debug("head commit: ");
-        core.debug(JSON.stringify(actionContext.headCommit));
+        core.debug(JSON.stringify(actionContext.sha));
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        const tempBranch = `bump_tmp_${actionContext.headCommit?.id ?? ""}`;
+        const tempBranch = `bump_tmp_${actionContext.sha}`;
 
         const options = {
             cwd: process.cwd(),
